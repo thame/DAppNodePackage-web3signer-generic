@@ -1,0 +1,23 @@
+version: "3.8"
+services:
+  brain:
+    build:
+      args:
+        NETWORK: lukso
+
+  web3signer:
+    build:
+      args:
+        NETWORK: lukso
+    healthcheck:
+      test: >-
+        curl -H 'Host: web3signer.web3signer-lukso.dappnode'
+        http://localhost:9000/healthcheck
+      interval: 5s
+      timeout: 5s
+      retries: 100
+
+  flyway:
+    build:
+      args:
+        NETWORK: lukso

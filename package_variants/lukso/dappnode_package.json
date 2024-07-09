@@ -1,0 +1,15 @@
+{
+  "name": "web3signer-lukso.dnp.dappnode.eth",
+  "version": "0.1.3",
+  "links": {
+    "ui": "http://brain.web3signer-lukso.dappnode",
+    "homepage": "https://docs.web3signer.consensys.net/en/latest/",
+    "readme": "https://github.com/ConsenSys/web3signer/blob/master/README.md"
+  },
+  "globalEnvs": [
+    {
+      "envs": ["CONSENSUS_CLIENT_LUKSO", "EXECUTION_CLIENT_LUKSO"],
+      "services": ["brain"]
+    }
+  ]
+}

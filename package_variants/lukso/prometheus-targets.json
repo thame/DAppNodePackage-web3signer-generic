@@ -1,0 +1,9 @@
+[
+  {
+    "labels": {
+      "package": "web3signer-lukso.dnp.dappnode.eth",
+      "service": "web3signer.web3signer-lukso.dappnode"
+    },
+    "targets": ["web3signer.web3signer-lukso.dappnode:9091"]
+  }
+]

@@ -1,0 +1,24 @@
+FROM alpine:3.15.10 as migrations-download
+ARG WEB3SIGNER_VERSION
+WORKDIR /usr/src/app
+
+# Copy files in branch ${WEB3SIGNER_VERSION} from web3signer repository
+RUN apk --no-cache add git && \
+    git clone --depth 1 --branch ${WEB3SIGNER_VERSION} https://github.com/ConsenSys/web3signer.git
+
+FROM postgres:14.1-alpine3.15
+
+ENV POSTGRES_PASSWORD=password \
+    PGPASSWORD=password \
+    POSTGRES_USER=postgres \ 
+    POSTGRES_DB=web3signer \
+    INITDB_DIR=/docker-entrypoint-initdb.d/
+
+COPY rename_files.sh /usr/local/bin/rename_files.sh
+COPY --from=migrations-download /usr/src/app/web3signer/slashing-protection/src/main/resources/migrations/postgresql/* ${INITDB_DIR}
+
+RUN chmod +x /usr/local/bin/rename_files.sh && /usr/local/bin/rename_files.sh
+
+USER postgres
+
+CMD ["postgres"]
