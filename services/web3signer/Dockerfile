@@ -6,7 +6,8 @@ ARG NETWORK
 ARG STAKER_SCRIPTS_VERSION
 
 USER root
-RUN apt-get update && apt-get install ca-certificates --yes
+
+RUN apt-get update && apt-get install --yes --no-install-recommends ca-certificates && apt-get clean
 
 COPY entrypoint.sh /usr/local/bin/entrypoint.sh
 
