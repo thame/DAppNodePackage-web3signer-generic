@@ -11,11 +11,14 @@ RUN apt-get update && apt-get install --yes --no-install-recommends ca-certifica
 
 COPY entrypoint.sh /usr/local/bin/entrypoint.sh
 
-ENV NETWORK=${NETWORK} \
-    STAKER_SCRIPTS_URL=https://github.com/dappnode/staker-package-scripts/releases/download/${STAKER_SCRIPTS_VERSION}
+ENV STAKER_SCRIPTS_URL=https://github.com/dappnode/staker-package-scripts/releases/download/${STAKER_SCRIPTS_VERSION}
 
 ADD ${STAKER_SCRIPTS_URL}/common_tools.sh /etc/profile.d/
 
 RUN chmod +rx /usr/local/bin/entrypoint.sh /etc/profile.d/common_tools.sh
+
+# This env changes the variant
+# Placed at the end to regenerate the least amount of layers
+ENV NETWORK=${NETWORK}
 
 ENTRYPOINT ["/usr/local/bin/entrypoint.sh"]

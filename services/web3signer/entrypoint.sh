@@ -1,21 +1,12 @@
 #!/bin/sh
 
+SUPPORTED_NETWORKS="mainnet holesky gnosis lukso"
 KEYFILES_DIR="/data/keyfiles"
 
-set_web3signer_pkg_domain() {
-  if [ -z "${NETWORK}" ]; then
-    echo "[ERROR - entrypoint] NETWORK is not set. Exiting..."
-    exit 1
-  fi
+# shellcheck disable=SC1091
+. /etc/profile
 
-  if [ "${NETWORK}" = "mainnet" ]; then
-    WEB3SIGNER_DOMAIN="web3signer.dappnode"
-  else
-    WEB3SIGNER_DOMAIN="web3signer-${NETWORK}.dappnode"
-  fi
-
-  export WEB3SIGNER_DOMAIN
-}
+WEB3SIGNER_DOMAIN=$(get_web3signer_domain "${NETWORK}" "${SUPPORTED_NETWORKS}")
 
 generate_cors_settings() {
   CORS_ALLOWLIST="web3signer.${WEB3SIGNER_DOMAIN},brain.${WEB3SIGNER_DOMAIN}"
@@ -68,7 +59,6 @@ run_web3signer() {
     --key-manager-api-enabled=true ${EXTRA_OPTS}
 }
 
-set_web3signer_pkg_domain
 generate_cors_settings
 prepare_keyfiles_dir
 run_web3signer
