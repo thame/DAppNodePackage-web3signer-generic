@@ -9,6 +9,8 @@ services:
     build:
       args:
         NETWORK: gnosis
+        PGPASSWORD: gnosis
+        POSTGRES_DB: web3signer-gnosis
     healthcheck:
       test: >-
         curl -H 'Host: web3signer.web3signer-gnosis.dappnode'
@@ -21,3 +23,13 @@ services:
     build:
       args:
         NETWORK: gnosis
+        PGPASSWORD: gnosis
+        POSTGRES_DB: web3signer-gnosis
+
+  postgres:
+    build:
+      dockerfile: Dockerfile.debian
+      args:
+        POSTGRES_PASSWORD: gnosis
+        PGPASSWORD: gnosis
+        POSTGRES_DB: web3signer-gnosis
