@@ -15,5 +15,8 @@
       "envs": ["CONSENSUS_CLIENT_MAINNET"],
       "services": ["web3signer"]
     }
-  ]
+  ],
+  "optionalDependencies": {
+    "prysm.dnp.dappnode.eth": ">=3.0.16"
+  }
 }
