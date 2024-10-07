@@ -15,5 +15,8 @@
       "envs": ["CONSENSUS_CLIENT_HOLESKY"],
       "services": ["web3signer"]
     }
-  ]
+  ],
+  "optionalDependencies": {
+    "prysm-holesky.dnp.dappnode.eth": ">=0.1.5"
+  }
 }
