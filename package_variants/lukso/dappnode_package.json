@@ -11,5 +11,8 @@
       "envs": ["CONSENSUS_CLIENT_LUKSO", "EXECUTION_CLIENT_LUKSO"],
       "services": ["brain"]
     }
-  ]
+  ],
+  "optionalDependencies": {
+    "prysm-lukso.dnp.dappnode.eth": ">=0.1.2"
+  }
 }
