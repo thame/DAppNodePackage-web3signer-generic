@@ -9,8 +9,8 @@ KEYFILES_DIR="/data/keyfiles"
 WEB3SIGNER_DOMAIN=$(get_web3signer_domain "${NETWORK}" "${SUPPORTED_NETWORKS}")
 
 generate_cors_settings() {
-  CORS_ALLOWLIST="web3signer.${WEB3SIGNER_DOMAIN},brain.${WEB3SIGNER_DOMAIN}"
-  CORS_ORIGINS="http://web3signer.${WEB3SIGNER_DOMAIN},http://brain.${WEB3SIGNER_DOMAIN}"
+  CORS_ALLOWLIST="web3signer.${WEB3SIGNER_DOMAIN},brain.${WEB3SIGNER_DOMAIN},signer.${NETWORK}.dncore.dappnode,signer.${NETWORK}.staker.dappnode"
+  CORS_ORIGINS="http://web3signer.${WEB3SIGNER_DOMAIN},http://brain.${WEB3SIGNER_DOMAIN},http://signer.${NETWORK}.dncore.dappnode,http://signer.${NETWORK}.staker.dappnode"
 
   consensus_dnp=$(get_value_from_global_env "CONSENSUS_CLIENT" "${NETWORK}")
 
