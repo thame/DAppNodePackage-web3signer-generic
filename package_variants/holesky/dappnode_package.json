@@ -1,6 +1,6 @@
 {
   "name": "web3signer-holesky.dnp.dappnode.eth",
-  "version": "0.1.5",
+  "version": "0.1.9",
   "links": {
     "ui": "http://brain.web3signer-holesky.dappnode",
     "homepage": "https://docs.web3signer.consensys.net/en/latest/",
@@ -8,7 +8,11 @@
   },
   "globalEnvs": [
     {
-      "envs": ["CONSENSUS_CLIENT_HOLESKY", "EXECUTION_CLIENT_HOLESKY", "MEVBOOST_HOLESKY"],
+      "envs": [
+        "CONSENSUS_CLIENT_HOLESKY",
+        "EXECUTION_CLIENT_HOLESKY",
+        "MEVBOOST_HOLESKY"
+      ],
       "services": ["brain"]
     },
     {
