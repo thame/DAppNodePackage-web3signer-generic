@@ -46,5 +46,8 @@
       "path": "/app/data/brain-db.json",
       "service": "brain"
     }
-  ]
+  ],
+  "requirements": {
+    "minimumDappnodeVersion": "0.2.101"
+  }
 }
