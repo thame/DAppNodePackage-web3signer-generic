@@ -9,8 +9,9 @@ services:
     build:
       args:
         NETWORK: mainnet
-        PGPASSWORD: password
-        POSTGRES_DB: web3signer
+        PGPASSWORD: mainnet
+        POSTGRES_DB: web3signer-mainnet
+        POSTGRES_USER: postgres
     healthcheck:
       test: >-
         curl -H 'Host: web3signer.web3signer.dappnode'
