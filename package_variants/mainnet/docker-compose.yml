@@ -30,7 +30,7 @@ services:
 
   postgres:
     build:
-      dockerfile: Dockerfile.debian
+      dockerfile: Dockerfile.alpine
       args:
         POSTGRES_PASSWORD: mainnet
         PGPASSWORD: mainnet
