@@ -6,7 +6,7 @@ WORKDIR /usr/src/app
 RUN apk --no-cache add git && \
     git clone --depth 1 --branch ${WEB3SIGNER_VERSION} https://github.com/ConsenSys/web3signer.git
 
-FROM flyway/flyway:9.16.1-alpine
+FROM flyway/flyway:latest
 
 ARG NETWORK
 ARG PGPASSWORD
@@ -26,6 +26,6 @@ RUN chmod +x /usr/local/bin/entrypoint.sh && rm -rf /flyway/sql/*
 
 COPY --from=migrations-download /usr/src/app/web3signer/slashing-protection/src/main/resources/migrations/postgresql/* ${MIGRATIONS_DIR}/
 
-RUN apk update && apk --no-cache add postgresql-client
+RUN apt update && apt install -y postgresql-client
 
 ENTRYPOINT ["entrypoint.sh"]
